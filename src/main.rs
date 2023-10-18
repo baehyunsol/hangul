@@ -1,4 +1,5 @@
 use std::{env, io::{self, Read, Write}, fs, thread, time};
+use h_hangul::*;;
 
 fn main() {
     let mut args: Vec<String> = env::args().collect();
@@ -62,7 +63,7 @@ fn fileio(input_path: &str, output_path: &str) {
             }
         };
 
-        let result = hangul::from_v16(&hangul::qwerty_to_kor(&hangul::into_v16(&input)));
+        let result = from_v16(&qwerty_to_kor(&into_v16(&input)));
 
         match write_to_file(output_path, result.as_bytes()) {
             Err(_) => {
@@ -79,7 +80,7 @@ fn interactive() {
 
         match io::stdin().read_line(&mut buf) {
             Ok(_) => {
-                println!("{}", hangul::from_v16(&hangul::qwerty_to_kor(&hangul::into_v16(&buf))));
+                println!("{}", from_v16(&qwerty_to_kor(&into_v16(&buf))));
             }
             _ => {
                 continue;
