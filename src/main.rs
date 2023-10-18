@@ -1,5 +1,5 @@
 use std::{env, io::{self, Read, Write}, fs, thread, time};
-use h_hangul::*;;
+use h_hangul::*;
 
 fn main() {
     let mut args: Vec<String> = env::args().collect();
